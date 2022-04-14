@@ -1,16 +1,36 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from __future__ import print_function
+import psutil
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+vmem = psutil.virtual_memory()
 
+total = vmem.total/1024/1024/1024
+total = round(total, 2)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+avail = vmem.available/1024/1024/1024
+avail = round(avail, 2)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+perc = vmem.percent
+perc = round(perc, 2)
+
+usedM = vmem.used/1024/1024/1024
+usedM = round(usedM, 2)
+
+free = vmem.free/1024/1024/1024
+free = round(free, 2)
+
+print("Всего памяти:", end=' ')
+print(total, end=' ')
+print("Гб")
+
+print("Процент занятой памяти на данный момент:", end=' ')
+print(perc, end='')
+print("%")
+
+print("Используемая память:", end=' ')
+print(usedM, end=' ')
+print("Гб")
+
+print("Свободно:", end=' ')
+print(free, end=' ')
+print("Гб")
