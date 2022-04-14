@@ -1,7 +1,6 @@
 from __future__ import print_function
 import psutil
 
-
 vmem = psutil.virtual_memory()
 
 total = vmem.total/1024/1024/1024
